@@ -1,5 +1,0 @@
-/mnt/e/Daten/Informatik/Programmierung v2.x/C++/Projects/CppResultOption/cmake-build-debug/CMakeFiles/edit_cache.dir
-/mnt/e/Daten/Informatik/Programmierung v2.x/C++/Projects/CppResultOption/cmake-build-debug/CMakeFiles/rebuild_cache.dir
-/mnt/e/Daten/Informatik/Programmierung v2.x/C++/Projects/CppResultOption/cmake-build-debug/tests/CMakeFiles/FunctionalCpp.Tests.Option.dir
-/mnt/e/Daten/Informatik/Programmierung v2.x/C++/Projects/CppResultOption/cmake-build-debug/tests/CMakeFiles/edit_cache.dir
-/mnt/e/Daten/Informatik/Programmierung v2.x/C++/Projects/CppResultOption/cmake-build-debug/tests/CMakeFiles/rebuild_cache.dir

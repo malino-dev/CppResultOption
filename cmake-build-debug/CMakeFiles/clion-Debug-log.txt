@@ -1,7 +1,0 @@
-/usr/bin/cmake -DCMAKE_BUILD_TYPE=Debug -DCMAKE_MAKE_PROGRAM=/usr/bin/ninja -G Ninja -S "/mnt/e/Daten/Informatik/Programmierung v2.x/C++/Projects/CppResultOption" -B "/mnt/e/Daten/Informatik/Programmierung v2.x/C++/Projects/CppResultOption/cmake-build-debug"
--- Performing Test CMAKE_HAVE_LIBC_PTHREAD
--- Performing Test CMAKE_HAVE_LIBC_PTHREAD - Success
--- Found Threads: TRUE  
--- Configuring done (1.7s)
--- Generating done (0.3s)
--- Build files have been written to: /mnt/e/Daten/Informatik/Programmierung v2.x/C++/Projects/CppResultOption/cmake-build-debug
