@@ -379,7 +379,7 @@ namespace internal
     };
 }
 
-template<typename T, typename E = std::exception>
+template<typename T, typename E = std::runtime_error>
 class Result final : public internal::ResultBase<T, E>
 {
 #pragma region Constructors
