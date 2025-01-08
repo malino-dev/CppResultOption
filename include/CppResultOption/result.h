@@ -9,8 +9,8 @@
 #include <optional>
 #include <string>
 
-#include "ok_expected_exception.h"
 #include "err_expected_exception.h"
+#include "ok_expected_exception.h"
 
 #include "option.h"
 #include "option_prelude.h"
@@ -116,18 +116,46 @@ namespace internal
 #pragma endregion
 
 #pragma region Expect
-        T Expect(std::string const& message) const
+        T const& Expect(std::string const& message) const&
         {
             if (IsErr()) throw OkExpectedException(message);
 
             return UnwrapUnchecked();
         }
 
-        E ExpectErr(std::string const& message) const
+        T& Expect(std::string const& message) &
+        {
+            if (IsErr()) throw OkExpectedException(message);
+
+            return UnwrapUnchecked();
+        }
+
+        T Expect(std::string const& message) &&
+        {
+            if (IsErr()) throw OkExpectedException(message);
+
+            return std::move(*_okValue);
+        }
+
+        E const& ExpectErr(std::string const& message) const&
         {
             if (IsOk()) throw ErrExpectedException(message);
 
             return UnwrapErrUnchecked();
+        }
+
+        E& ExpectErr(std::string const& message) &
+        {
+            if (IsOk()) throw ErrExpectedException(message);
+
+            return UnwrapErrUnchecked();
+        }
+
+        E ExpectErr(std::string const& message) &&
+        {
+            if (IsOk()) throw ErrExpectedException(message);
+
+            return std::move(*_errValue);
         }
 #pragma endregion
 
@@ -295,7 +323,7 @@ namespace internal
             return *_okValue;
         }
 
-        T& UnwrapUnchecked()
+        T& UnwrapUnchecked() &
         {
             return *_okValue;
         }
