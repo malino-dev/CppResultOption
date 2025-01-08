@@ -8,6 +8,7 @@
 #include "option_matcher.h"
 #include "option_prelude.h"
 #include "result.h"
+#include "result_prelude.h"
 #include "some_expected_exception.h"
 
 #include <cassert>
@@ -15,12 +16,6 @@
 
 namespace m24
 {
-
-template<typename T, typename R, typename OkFunctor>
-class OptionMatcher;
-
-template<typename T>
-class Option;
 
 namespace internal
 {

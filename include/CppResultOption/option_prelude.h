@@ -8,14 +8,6 @@
 #include "option.h"
 #include "option_none.h"
 
-namespace m24
-{
-
-template<typename T>
-class Option;
-
-} // namespace m24
-
 namespace m24::Prelude
 {
 
