@@ -6,12 +6,6 @@ add_subdirectory(tests)
 
 add_library(CppResultOption INTERFACE)
 
-target_include_directories(CppResultOption INTERFACE
-        $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
-        $<INSTALL_INTERFACE:include>
-)
+target_include_directories(CppResultOption INTERFACE include/)
 
-install(TARGETS CppResultOption
-        EXPORT CppResultOptionTargets)
-
-install(DIRECTORY include/ DESTINATION include)
+install(DIRECTORY include/ DESTINATION ${CMAKE_INSTALL_INCLUDEDIR})
