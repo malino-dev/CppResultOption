@@ -4,8 +4,8 @@
 
 #include <gtest/gtest.h>
 
-#include "../include/option.h"
-#include "../include/result.h"
+#include "../include/CppResultOption/option.h"
+#include "../include/CppResultOption/result.h"
 
 using namespace m24;
 using namespace m24::Prelude;
