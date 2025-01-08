@@ -252,20 +252,41 @@ namespace internal
 #pragma endregion
 
 #pragma region Unwrap
-        T const& Unwrap() const
+        T const& Unwrap() const&
         {
             if (IsNone()) throw SomeExpectedException();
 
             return UnwrapUnchecked();
         }
+
+        T& Unwrap() &
+        {
+            if (IsNone()) throw SomeExpectedException();
+
+            return UnwrapUnchecked();
+        }
+
+        T Unwrap() &&
+        {
+            if (IsNone()) throw SomeExpectedException();
+
+            return std::move(*_value);
+        }
 #pragma endregion
 
 #pragma region UnwrapOr
-        T const& UnwrapOr(T const& defaultValue) const noexcept
+        T const& UnwrapOr(T const& defaultValue) const& noexcept
         {
             if (IsNone()) return defaultValue;
 
             return UnwrapUnchecked();
+        }
+
+        T UnwrapOr(T const& defaultValue) && noexcept
+        {
+            if (IsNone()) return defaultValue;
+
+            return std::move(_value);
         }
 #pragma endregion
 

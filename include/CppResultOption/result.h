@@ -6,18 +6,13 @@
 #define RESULT2_H
 
 #include <cassert>
-#include <functional>
 #include <optional>
 #include <string>
-#include <variant>
 
 #include "err_expected_exception.h"
 #include "ok_expected_exception.h"
 
-#include "option.h"
 #include "option_prelude.h"
-#include "result_err.h"
-#include "result_ok.h"
 #include "result_prelude.h"
 #include "result_tags.h"
 
@@ -34,7 +29,7 @@ namespace internal
     {
     private:
         std::optional<T> _okValue;
-        std::optional<T> _errValue;
+        std::optional<E> _errValue;
 
     public:
 #pragma region Constructors
@@ -275,40 +270,84 @@ namespace internal
 #pragma endregion
 
 #pragma region Unwrap
-        T const& Unwrap() const
+        T const& Unwrap() const&
         {
             if (IsErr()) throw OkExpectedException();
 
             return UnwrapUnchecked();
         }
 
-        T const& UnwrapUnchecked() const
+        T& Unwrap() &
+        {
+            if (IsErr()) throw OkExpectedException();
+
+            return UnwrapUnchecked();
+        }
+
+        T Unwrap() &&
+        {
+            if (IsErr()) throw OkExpectedException();
+
+            return std::move(*_okValue);
+        }
+
+    private:
+        T const& UnwrapUnchecked() const&
         {
             return *_okValue;
         }
 
-        T const& UnwrapOr(T const& defaultValue) const
+        T& UnwrapUnchecked()
+        {
+            return *_okValue;
+        }
+
+    public:
+        T const& UnwrapOr(T const& defaultValue) const&
         {
             if (IsErr()) return defaultValue;
 
             return UnwrapUnchecked();
         }
 
+        T UnwrapOr(T const& defaultValue) &&
+        {
+            if (IsErr()) return defaultValue;
+
+            return std::move(*_okValue);
+        }
+
         template<typename Functor>
-        T const& UnwrapOrElse(Functor&& defaultValue) const
+        T const& UnwrapOrElse(Functor&& defaultValue) const&
         {
             if (IsErr()) return defaultValue();
 
             return UnwrapUnchecked();
         }
 
-        E const& UnwrapErr() const
+        template<typename Functor>
+        T UnwrapOrElse(Functor&& defaultValue) &&
+        {
+            if (IsErr()) return defaultValue();
+
+            return std::move(*_okValue);
+        }
+
+        E const& UnwrapErr() const&
         {
             if (IsOk()) throw ErrExpectedException();
 
             return UnwrapErrUnchecked();
         }
 
+        E UnwrapErr() &&
+        {
+            if (IsOk()) throw ErrExpectedException();
+
+            return std::move(*_errValue);
+        }
+
+    private:
         E const& UnwrapErrUnchecked() const
         {
             return *_errValue;
@@ -377,13 +416,13 @@ namespace internal
         }
 #pragma endregion
     };
-}
+} // namespace internal
 
 template<typename T, typename E = std::runtime_error>
 class Result final : public internal::ResultBase<T, E>
 {
 #pragma region Constructors
-    public:
+public:
     Result(ResultOkTag const& tag, T const& value)
         : internal::ResultBase<T, E>(tag, value)
     {
