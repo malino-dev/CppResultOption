@@ -10,6 +10,8 @@
 using namespace m24;
 using namespace m24::Prelude;
 
+// TODO: implement tests for deleted constructors/operators
+
 #pragma region Option::And
 TEST(Option, And_SomeSome)
 {
