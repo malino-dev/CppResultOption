@@ -281,7 +281,7 @@ namespace internal
         {
             if (IsNone()) return defaultValue;
 
-            return std::move(_value);
+            return std::move(*_value);
         }
 #pragma endregion
 
