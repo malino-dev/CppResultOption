@@ -378,6 +378,8 @@ namespace internal
         {
             return *_errValue;
         }
+
+    public:
 #pragma endregion
 
 #pragma region Operators
