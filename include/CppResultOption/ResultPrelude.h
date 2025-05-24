@@ -5,8 +5,8 @@
 #ifndef RESULT_PRELUDE_H
 #define RESULT_PRELUDE_H
 
-#include "result_err.h"
-#include "result_ok.h"
+#include "ResultErr.h"
+#include "ResultOk.h"
 
 namespace m24::Prelude
 {

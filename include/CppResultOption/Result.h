@@ -9,13 +9,13 @@
 #include <optional>
 #include <string>
 
-#include "err_expected_exception.h"
-#include "ok_expected_exception.h"
+#include "ErrExpectedException.h"
+#include "OkExpectedException.h"
 
-#include "option.h"
-#include "option_prelude.h"
-#include "result_prelude.h"
-#include "result_tags.h"
+#include "Option.h"
+#include "OptionPrelude.h"
+#include "ResultPrelude.h"
+#include "ResultTags.h"
 
 namespace m24
 {

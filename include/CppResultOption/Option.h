@@ -5,11 +5,11 @@
 #ifndef OPTION_H
 #define OPTION_H
 
-#include "option_matcher.h"
-#include "option_prelude.h"
-#include "result.h"
-#include "result_prelude.h"
-#include "some_expected_exception.h"
+#include "OptionMatcher.h"
+#include "OptionPrelude.h"
+#include "Result.h"
+#include "ResultPrelude.h"
+#include "SomeExpectedException.h"
 
 #include <cassert>
 #include <optional>

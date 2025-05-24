@@ -5,8 +5,8 @@
 #ifndef OPTION_PRELUDE_H
 #define OPTION_PRELUDE_H
 
-#include "option.h"
-#include "option_none.h"
+#include "Option.h"
+#include "OptionNone.h"
 
 namespace m24::Prelude
 {
