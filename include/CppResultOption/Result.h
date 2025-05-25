@@ -6,6 +6,7 @@
 #define RESULT2_H
 
 #include <cassert>
+#include <iostream>
 #include <optional>
 #include <string>
 
